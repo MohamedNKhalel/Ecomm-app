@@ -1,0 +1,42 @@
+<section class="container  bg-body-tertiary rounded shadow p-3 mb-4" *ngIf="orderDetails.length>0 ;else msg" >
+    <h1 class=" text-uppercase text-center">All Orders</h1>
+    <div  [class.bg-primary-subtle]="num"  class="border p-4 shadow rounded mb-5 overflow-hidden" *ngFor="let item of orderDetails;let num = odd,let x= index">
+        <h2 class="h4">Cart Number: {{x+1}}</h2>
+        <h2 class="text-main fw-bold">Total Price: {{item.totalOrderPrice}}</h2>
+        <div class="row align-items-center rounded shadow order-card p-2 my-2" *ngFor="let cart of item.cartItems ">
+            <div class="col-md-2">
+                <img class="w-100 mb-2" [src]="cart.product.imageCover" alt="">
+            </div>
+            <div class="col-md-4">
+                <div>
+                    <h3>{{cart.product.category.name}}</h3>
+                    <h4>{{cart.product.title}}</h4>
+                    <p>price: {{cart.price}}</p>
+                    <div>
+                        <i [class.rating-color]="cart.product.ratingsAverage>= num" *ngFor="let num of [1,2,3,4,5]" class="fa fa-star"></i>
+                        <span>{{cart.product.ratingsAverage}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div>
+                    <h3 class="h5">Payment Method : {{item.paymentMethodType}} </h3>
+                    <h4 class="h6">Paid At:  {{item.paidAt | date}} </h4>
+                    <div class="my-2">
+                        <span class="fw-bold">Shipping Adress:</span>
+                        <ul class="list-unstyled">
+                            <li> <i class="fa fa-city"></i> {{item.shippingAddress.city}}</li>
+                            <li> <i class="fa fa-phone"></i> {{item.shippingAddress.phone}}</li>
+                            <li> <i class="fa fa-info-circle"></i> {{item.shippingAddress.details}}</li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<ng-template #msg>
+    <h2 class="text-center">There are no orders to show...</h2>
+</ng-template>

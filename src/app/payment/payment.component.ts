@@ -32,6 +32,8 @@ export class PaymentComponent implements OnInit{
     this._OrderService.visaPayApi(this.cartID,this.payForm.value).subscribe({
       next:data=>{
         this.isLoading=false
+        console.log(data);
+        
         if(data.status=="success"){
           window.open(data.session.url,'_self')
         }

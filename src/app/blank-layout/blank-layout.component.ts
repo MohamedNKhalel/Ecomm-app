@@ -11,6 +11,6 @@ export class BlankLayoutComponent {
     window.scrollTo(0,0);
   }
   goDown():void{
-    window.scrollTo(0,9000);
+    window.scrollTo(0,90000);
   }
 }

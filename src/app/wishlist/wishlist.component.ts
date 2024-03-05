@@ -20,7 +20,6 @@ export class WishlistComponent implements OnInit {
         this.products = data.data
         const newData = data.data.map((item:any)=>item.id)
         this.wishListData=newData;
-        console.log(this.products);
       },
       error:err=>{
         console.log(err);
@@ -32,7 +31,6 @@ export class WishlistComponent implements OnInit {
     this._Renderer2.setAttribute(elem,"disabled",'true')
     this._CartService.addToCart(id).subscribe({
       next:data=>{
-        console.log(data);
         this._CartService.cartNumber.next(data.numOfCartItems)
         this._ToastrService.success(data.message)
       },

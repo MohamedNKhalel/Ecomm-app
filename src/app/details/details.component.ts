@@ -25,7 +25,6 @@ export class DetailsComponent implements OnInit{
         this._EcommDataService.getProductDetails(productId).subscribe({
           next:response=>{
             this.productDetails = response.data
-            console.log(this.productDetails);
             
           }
         })
@@ -52,6 +51,9 @@ export class DetailsComponent implements OnInit{
     touchDrag: true,
     pullDrag: false,
     dots: false,
+    autoplay:true,
+    autoplayTimeout:3000,
+    autoplaySpeed:1500,
     navSpeed: 700,
     navText: ['', ''],
     responsive: {

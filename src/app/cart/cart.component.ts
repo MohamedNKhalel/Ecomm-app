@@ -13,7 +13,6 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
     this._CartService.getUserCart().subscribe({
       next:data=>{
-        console.log(data);
         this.cartDetails=data.data
         
       },
@@ -27,7 +26,6 @@ export class CartComponent implements OnInit {
     this._Renderer2.setAttribute(elem,"disabled",'true')
     this._CartService.removeCartItem(id).subscribe({
       next:data=>{
-        console.log(data);
         this._Renderer2.removeAttribute(elem,"disabled")
         this.cartDetails=data.data
         this._CartService.cartNumber.next(data.numOfCartItems)
@@ -45,7 +43,6 @@ export class CartComponent implements OnInit {
       this._Renderer2.setAttribute(elem2,"disabled",'true')
       this._CartService.updateCartQuantity(id,count).subscribe({
         next:data=>{
-          console.log(data);
           this.cartDetails=data.data
           this._Renderer2.removeAttribute(elem1,"disabled")
         this._Renderer2.removeAttribute(elem2,"disabled")

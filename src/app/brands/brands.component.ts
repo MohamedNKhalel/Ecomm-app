@@ -19,7 +19,6 @@ export class BrandsComponent implements OnInit {
     this._BrandsService.getAllBrands().subscribe({
       next:data=>{
         this.allBrands=data.data
-        console.log(this.allBrands);
         this.pageSize = data.metadata.limit;
         this.currentPage = data.metadata.currentPage;
         this.total = data.results;

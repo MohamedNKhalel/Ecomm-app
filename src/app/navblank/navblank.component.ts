@@ -30,7 +30,12 @@ export class NavblankComponent implements OnInit {
   emailSettingFlag:boolean=false
   isLoading:boolean=false
   msgError:string =''
-  inputValue:string =''
+  inputNameValue:string =''
+  inputCurrentPassValue:string =''
+  inputNewPassValue:string =''
+  inputRePassValue:string =''
+  inputEmailValue:string =''
+  inputPhoneValue:string =''
 
   toggleEyeCurrentPass(){
     this.eyeCurrentPass = !this.eyeCurrentPass
@@ -130,7 +135,7 @@ ngOnInit(): void {
         this._AuthService.userDataVar.next(data.user.name)
         localStorage.setItem('userName',data.user.name)
         this.userName = localStorage.getItem('userName')
-        this.inputValue=''
+        this.inputNameValue=''
         this._ToastrService.success('Name Changed Successfully')
       },
       error:err=>{
@@ -155,12 +160,18 @@ ngOnInit(): void {
     this._AuthService.UpdateLoggedUserPassword(this.passForm.value).subscribe({
       next:data=>{
         console.log(data);
-        this.isLoading=false
-        this.showsetting = false
-        this.setting=false
-        this.inputValue=''
-        $('.setting').hide()
-        this._ToastrService.success('Password Changed Successfully')
+        if(data.message == "success"){
+          localStorage.setItem('userToken',data.token);
+          this.isLoading=false
+          this.showsetting = false
+          this.setting=false
+          this.inputCurrentPassValue=''
+          this.inputNewPassValue=''
+          this.inputRePassValue=''
+          $('.setting').hide()
+          this._ToastrService.success('Password Changed Successfully')
+        }
+        
 
       },
       error:err=>{
@@ -196,7 +207,7 @@ ngOnInit(): void {
         this.isLoading=false
         this.showsetting = false
         this.setting=false
-        this.inputValue=''
+        this.inputPhoneValue=''
         $('.setting').hide()
         this._ToastrService.success('Phone Changed Successfully')
       },
@@ -223,7 +234,7 @@ ngOnInit(): void {
         this.showsetting = false
         this.setting=false
         $('.setting').hide()
-        this.inputValue=''
+        this.inputEmailValue=''
         this._ToastrService.success('Email Changed Successfully')
       },
       error:err=>{

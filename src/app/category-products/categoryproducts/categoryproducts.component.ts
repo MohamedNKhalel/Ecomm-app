@@ -21,7 +21,6 @@ export class CategoryproductsComponent implements OnInit {
       {
         next:data=>{
           this.catID = data.get('id')
-          console.log(this.catID);
           
         }
       }
@@ -29,7 +28,6 @@ export class CategoryproductsComponent implements OnInit {
     )
     this._EcommDataService.getAllCatProducts(this.catID).subscribe({
       next:data=>{
-        console.log(data.data);
         this.catProducts =data.data
       }
     })

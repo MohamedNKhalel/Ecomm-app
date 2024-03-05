@@ -4,7 +4,7 @@
             <div class="col-md-3">
                 <div>
                     <owl-carousel-o [options]="customOptions">
-                        <ng-template *ngFor="let item of productDetails.images" carouselSlide><img [src]="item" alt=""></ng-template>  
+                        <ng-template *ngFor="let item of productDetails?.images" carouselSlide><img [src]="item" alt=""></ng-template>  
                     </owl-carousel-o>
                 </div>
             </div>
@@ -14,7 +14,7 @@
                     <p class="text-muted py-3 mx-3">{{productDetails?.description}}</p>
                     <h4 class="h6 text-success fw-bold">{{productDetails?.category?.name}}</h4>
                     <div class="d-flex justify-content-between align-items-center">
-                        <span> {{[productDetails.price]}}  EGP</span>
+                        <span> {{[productDetails?.price]}}  EGP</span>
                         <span>
                             <i [class.rating-color]="productDetails?.ratingsAverage >= num" *ngFor="let num of [1,2,3,4,5]" class="fas fa-star rating-color"></i> 
                             

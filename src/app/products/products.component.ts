@@ -24,7 +24,6 @@ export class ProductsComponent implements OnInit {
       {
         next:data=>{
           this.allProducts = data.data
-          console.log(this.allProducts);
           this.pageSize= data.metadata.limit;
           this.currentPage=data.metadata.currentPage;
           this.total=data.results

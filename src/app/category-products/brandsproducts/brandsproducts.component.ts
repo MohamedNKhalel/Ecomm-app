@@ -21,13 +21,11 @@ export class BrandsproductsComponent implements OnInit {
     this._ActivatedRoute.paramMap.subscribe({
       next:data=>{
         this.brandId = data.get('id')
-        console.log(this.brandId);
         
       }
     })
     this._EcommDataService.getAllBrandProducts(this.brandId).subscribe({
       next:data=>{
-        console.log(data);
         this.brandProducts = data.data
       }
     })
@@ -56,7 +54,6 @@ export class BrandsproductsComponent implements OnInit {
   {
     this._WishlistService.addToWishList(id).subscribe({
       next:data=>{
-        console.log(data);
         this.wishListData = data.data
         this._WishlistService.listNum.next(data.data.length)
         this._ToastrService.success(data.message)
@@ -72,7 +69,6 @@ export class BrandsproductsComponent implements OnInit {
   {
     this._WishlistService.removeProduct(id).subscribe({
       next:data=>{
-        console.log(data);
         this.wishListData = data.data
         this._WishlistService.listNum.next(data.data.length)
         this._ToastrService.success("Product removed successfully from your wishlist")

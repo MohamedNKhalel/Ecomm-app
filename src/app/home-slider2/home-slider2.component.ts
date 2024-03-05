@@ -49,7 +49,6 @@ export class HomeSlider2Component implements OnInit {
     this._EcommDataService.getAllCategories().subscribe({
       next:data=>{
         this.allCategories = data.data
-        console.log(this.allCategories[0]._id);
         
         
       },

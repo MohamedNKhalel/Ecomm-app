@@ -17,12 +17,9 @@ export class AllOrdersComponent implements OnInit {
   ngOnInit(): void {
     this._AuthService.saveUserData()
     this.UserId=this._AuthService.userDataVar.getValue().id
-    console.log(this.UserId);
     this._OrderService.getUserOrders(this.UserId).subscribe({
       next:data=>{
         this.orderDetails=data
-        console.log(this.UserId);
-        console.log(data);
       },
       error:err=>{
         console.log(err);

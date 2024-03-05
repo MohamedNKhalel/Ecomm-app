@@ -32,7 +32,6 @@ export class HomeComponent implements OnInit {
     this._Renderer2.setAttribute(elem,"disabled",'true')
     this._CartService.addToCart(productId).subscribe({
       next:data=>{
-        console.log(data);
         this._ToastrService.success(data.message)
         this._Renderer2.removeAttribute(elem,"disabled")
         this._CartService.cartNumber.next(data.numOfCartItems)
